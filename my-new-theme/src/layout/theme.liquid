@@ -13,25 +13,25 @@
 
   {% include 'style-tags', layout: 'theme' %}
   {% include 'script-tags', layout: 'theme' %}
+  
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/shopify-cartjs/0.4.1/cart.min.js"></script>
 
   {{ content_for_header }}
 </head>
 
 <body>
+   <h1>Skeleton theme</h1>
   {{ content_for_layout }}
-  <h1>Skeleton theme</h1>
-
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/shopify-cartjs/0.4.1/cart.min.js"></script>
-
-  <script type="text/javascript">
-      jQuery(function() {
-          CartJS.init({{ cart | json }}, {
-              "dataAPI": false,
-              "requestBodyClass": "loading"
-          });
-      });
-  </script>
-
+ 
+ <script type="text/javascript">
+    jQuery(function() {
+        CartJS.init({{ cart | json }}, {
+            "dataAPI": false,
+            "requestBodyClass": "loading"
+        });
+    });
+</script>
+  
 </body>
 </html>

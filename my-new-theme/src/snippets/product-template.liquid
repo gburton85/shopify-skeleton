@@ -1,0 +1,21 @@
+{% assign products_per_row = settings.home_featured_products_num %}
+{% assign max_products = '50' %}
+
+<div class="section-header text-center">
+    <h3 class="section-header--title">Products</h3>
+</div>
+
+{% case products_per_row %}
+  {% when '3' %}
+    {% assign grid_item_width = 'medium--one-third large--one-third' %}
+  {% when '4' %}
+    {% assign grid_item_width = 'medium-down--one-half large--one-quarter' %}
+  {% when '5' %}
+    {% assign grid_item_width = 'medium-down--one-half large--one-fifth' %}
+{% endcase %}
+
+<div class="grid-uniform product-grid">
+  {% for product in collections['all'].products limit: max_products %}
+    {% include 'product-grid-item' %}
+  {% endfor %}
+</div>
