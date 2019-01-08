@@ -98,7 +98,8 @@
     </a>
     <button id="add" data-cart-add="19437944111204" data-cart-quantity="1">Add a {{ product.title }}</button>
     <button id="clear">Clear items</button>
-    
+
+    You have <span id="counter">{{ cart.item_count }}</span> items in your cart.    
 
   </div>
 </div>
@@ -106,13 +107,10 @@
 
   <script type="text/javascript">
     
-    
-
     $('#add').click(function() {
         CartJS.addItem(19437944111204);
       	console.log('Type cartJS into the console to see the cart has updated, expand the cart field');
     });
-    
 
     $('#clear').on('click',function(e){
       $.ajax({
@@ -125,7 +123,9 @@
       });
     });
     
-    
+    $(document).on('cart.requestComplete', function(event, cart) {
+        $('#counter').html(cart.item_count);
+    });
 
     
 </script>
